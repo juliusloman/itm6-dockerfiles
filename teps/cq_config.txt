@@ -1,0 +1,317 @@
+# ****************************************************************************
+# * Licensed Materials - Property of IBM
+# * 
+# * OCO Source Materials - IBM Confidential
+# * 5724-C04
+# *
+# * Copyright IBM Corporation 2007-2012 All Rights Reserved
+# *
+# * The source code for this program is not published or other-
+# * wise divested of its trade secrets, irrespective of what has
+# * been deposited with the U.S. Copyright Office.
+# *****************************************************************************
+
+# This is a sample silent configuration response file for TEPS.
+
+# To configure TEPS using this silent response file:
+#   1) copy this file to another location and modify the necessary parameters
+#   2) run "itmcmd config -A -p <silent_response_file> cq"
+#      - give an absolute path for the silent_response_file
+#      - cq is the product code of TEPS
+
+# Syntax rules:
+# - Comment lines begin with "#"
+# - Blank lines are ignored
+# - Parameter lines are PARAMETER=value (do not put space before the PARAMETER)
+# - Space before or after an equal sign is OK
+# - Parameter values should NOT contain the following characters $, =, or |
+
+################## TEMS CONFIGURATION ##################
+
+# Will this TEPS connect to a Tivoli Enterprise Monitoring Server (TEMS)?
+# This parameter is required.
+# Valid values are: YES and NO
+CMSCONNECT=YES
+
+# What is the hostname of the TEMS to connect to?
+# This parameter is NOT required.  (default is the local system hostname)
+#HOSTNAME=somehost.somewhere.com
+
+# Will this agent connect to the TEMS through a firewall?
+# This parameter is NOT required.  (default is NO)
+# Valid values are: YES and NO
+#   - If set to YES the NETWORKPROTOCOL must be ip.pipe
+#FIREWALL=NO
+
+# What network protocol is used when connecting to the TEMS?
+# This parameter is required.
+# Valid values are: ip, sna, ip.pipe, or ip.spipe
+NETWORKPROTOCOL=ip.pipe
+
+# What is the first backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, or none
+#BK1NETWORKPROTOCOL=none
+
+# What is the second backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe or none
+#BK2NETWORKPROTOCOL=none
+
+# If ip.pipe is one of the three protocols what is the IP pipe port number?
+# This parameter is NOT required. (default is 1918)
+#IPPIPEPORTNUMBER=1918
+
+# If ip.pipe is one of the three protocol what is the IP pipe partition name?
+# This parameter is NOT required. (default is null)
+#KDC_PARTITIONNAME=null
+
+# If ip.pipe is one of the three protocols what is the KDC partition file?
+# This parameter is NOT required. (default is null)
+#KDC_PARTITIONFILE=null
+
+# If ip.spipe is one of the three protocols what is the IP pipe port number?
+# This parameter is NOT required. (default is 3660)
+#IPSPIPEPORTNUMBER=3660
+
+# If ip is one of the three protocols what is the IP port number?
+# This parameter is NOT required. (default is 1918)
+# A port number and or one or more pools of port numbers can be given.
+# The format for a pool is #-# with no embedded blanks.
+#PORTNUMBER=1918
+
+# If sna is one of the three protocols what is the SNA net name?
+# This parameter is NOT required. (default is CANDLE)
+#NETNAME=CANDLE
+
+# If sna is one of the three protocols what is the SNA LU name?
+# This parameter is NOT required. (default is LUNAME)
+#LUNAME=LUNAME
+
+# If sna is one of the three protocols what is the SNA log mode?
+# This parameter is NOT required. (default is LOGMODE)
+#LOGMODE=LOGMODE
+
+################## OPTIONAL PRIMARY NETWORK NAME CONFIGURATION ##################
+
+# If the system is equipped with dual network host adapter cards you can designate
+# another network name.  What is the network name?
+# This parameter is NOT required. (default is none)
+#PRIMARYIP=none
+
+############### TEPS DATABASE CONFIGURATION  ###############
+# Which database would you like to use for the Tivoli Enterprise Portal Server?
+# To use an embedded database: set TEPSDATABASETYPE=1
+# To use a DB2 database: set TEPSDATABASETYPE=2
+# (Note: When an embedded database is selected for the Tivoli Enterprise Portal Server 
+# and DB2 is selected for the Warehouse database, (WHATYPE=DB2) the DB2INSTANCE parameter is obligatory.)
+# This parameters is NOT required (default is 2)
+#TEPSDATABASETYPE=2
+
+############### DB2 DATABASE CONFIGURATION ###############
+# What is the name of the DB2 instance?
+# This parameter is NOT required. (default is db1inst1)
+#DB2INSTANCE=db2inst1
+
+# What is the DB2 user ID that will use the database?
+# This parameter is NOT required. (default is itmuser)
+# The DB2 user ID must be in lowercase.  If the user already exists on
+# the operating system it must be lowercase.
+DB2ID=itmuser
+
+# What is the password for the DB2 user ID that will use the database?
+# This parameter is required if a password has not yet been configured.
+DB2PW=itmpass
+
+# Is it OK to create the DB2 login ID if it is not found?
+# This parameter is NOT required. (default is Y)
+# Valid values are: Y and N
+#DB2CREATEID=Y
+
+# Are you using DB2, Oracle or None for the Warehouse?
+# Note: This configuration parameter defines the Warehouse connection to an EXISTING database.
+# To use DB2: set WHATYPE=DB2
+# To use Oracle: set WHATYPE=JDBC
+# For None: set WHATYPE=NODB
+# This parameter is NOT required (default is DB2.)
+#WHATYPE=DB2
+
+#If WHATYPE=DB2, this should be NO, otherwise WHATYPE=JDBC this is YES ( default is NO)
+#KFW_STARTJVM=NO
+
+# What is the warehouse user ID?
+# This parameter is NOT required. (default is itmuser)
+WAREHOUSEID=itmuser
+
+# What is the warehouse user DB?
+# This parameter is  required. 
+WAREHOUSEDB=WAREHOUSE
+
+# What is the password for the warehouse user ID?
+# This parameter is required if a password has not yet been configured.
+# If not using a warehouse just enter any non-blank value.
+WAREHOUSEPW=itmpass
+
+# If Warehouse DB is JDBC what is JDBC driver class path?
+# This parameter is NOT required. (default is )
+#KFW_JDBC_DRIVER=
+
+# If Warehouse DB is JDBC what is JDBC driver name?
+# This parameter is NOT required. (default is )
+#WHCLASS=
+
+# If Warehouse DB is JDBC what is JDBC driver URL?
+# This parameter is NOT required. (default is )
+#WHURL=
+
+# If Warehouse DB is JDBC what are user-defined attributes?
+# This parameter is NOT required. (default is )
+#WHATTR=
+
+# What is the DB2 administrator ID?
+# This parameter is required. (default is db2inst1)
+# This should be the ID of the DB2 instance owner.
+ADMINISTRATORID=db2inst1
+
+# What is the password for the DB2 administrator ID?
+# This parameter is required if a password has not yet been configured.
+ADMINISTRATORPW=itmpass
+
+# What is the name of the DB2 database that will be created?
+# Note: TEPS0 is a reserved keyword and cannot be used as a DB2 database name.
+# This parameter is NOT required (default is TEPS.)
+#DB2NAME=TEPS
+
+# List any DB2 attributes.
+# This parameter is NOT required. (default is CONNECTION_LIMIT=32)
+#DB2ATTR=CONNECTION_LIMIT32
+
+################## DATASOURCE CONFIGURATION ##################
+
+# Zero or more datasources can be configured for the TEPS to use.
+# Each datasource is specified by four parameters.  For each datasource
+# append an incrementing number (starting with 1) to the end of its
+# paramters.  All datasource parameters are required except for DBATTR
+# which if unspecified will default to CONNECTION_LIMIT=32
+
+#DBNAME_1=mydb
+#DBID_1=myid
+#DBPW_1=mypw
+#DBATTR_1=CONNECTION_LIMIT=32
+
+#DBNAME_2=mydb
+#DBID_2=myid
+#DBPW_2=mypw
+#DBATTR_2=CONNECTION_LIMIT=32
+
+##################### LDAP CONFIGURATION #######################
+
+# Validate User with LDAP? 
+# Validate answers: YES/NO
+# This parameter is not required. Default is NO.
+KFW_LDAP_ENABLED=NO
+
+# LDAP type?
+# Validate answers: AD2000, AD2003, IDS6, OTHER
+# This parameter is not required. Default is OTHER.
+#KFW_LDAP_SERVER_TYPE=OTHER
+
+# LDAP base.
+# This parameter is not required.
+#KFW_LDAP_ROOT=
+
+# LDAP DN Base Entry
+# This parameter is not required.
+#KFW_LDAP_DN_BASE_ENTRY=o=ITMSSOEntry
+
+# LDAP bind ID.
+# This parameter is not required.
+#KFW_LDAP_BIND_DN=
+
+# LDAP bind password.
+# This parameter is required for LDAP type different than OTHER.
+#KFW_LDAP_BIND_PWD=
+
+# LDAP Port number.
+# This parameter is not required.
+#KFW_LDAP_PORT=389
+
+# LDAP host name. 
+# This parameter is not required.
+#KFW_LDAP_HOST_NAME=localhost
+
+# Enable Single Sign On ?
+# Validate answers: YES/NO
+# This parameter is no required. Default is NO.
+#KFW_LDAP_SSO_ENABLED=NO
+
+# Realm name.
+# This parameter is not required.
+#KFW_LDAP_SSO_REALM=
+
+# Domain name. 
+# This parameter is not required.
+#KFW_LDAP_SSO_DOMAIN=
+
+##################### Dashboard data provider #######################
+# Enable the Dashboard data provider? 
+# Valid answers: Y/N
+# This parameter is not required. Default is N.
+#KD8_ITM_REST_SERVICE_ENABLE=N
+
+# Enter the Domain override.
+# This parameter is not required and is only valid when the dashboard data
+# provider is enabled. The value may not exceed 124 characters and
+# may online include 'A-z', 'a-z', '0-9', '-', '_', '.', '@', '#', 
+# '$', '*', ':' and ' ' (space) characters.
+#KD8_HUBNAME_OVERRIDE=
+
+########### Authorization Policy Server Configuration #############
+# Enable authorization policies?
+# This parameter is not required. Default value is N.
+# This parameter, as well as the related parameters below, will be
+# ignored if the dashboard data provider is not enabled.
+# Valid answers: Y/N
+#KDQ_GS_ENABLE_POLICY_AUTH=N
+
+# NOTE: The following parameters will be ignored if the
+# authorization policies are not enabled.
+
+# If authorization policies are enabled, the following
+# parameter is required. Uncomment the line and provide the 
+# IP Address or fully qualified hostname of the Authorization Policy Server.
+#KDQ_GS_POLICY_SERVER_ADDRESS=
+
+# Choose the protocol used to connect to the Authorization Policy Server.
+# This parameter is not required.  The default value is HTTPS.
+# This parameter will be ignored if authorization policies are
+# not enabled. Valid values are HTTPS and HTTP
+#KDQ_GS_WEB_PROTOCOL=HTTPS
+
+# Choose the port used to connect to the Authorization Policy Server.
+# This parameter is not required.  The default value is 16311.
+# The valid port values are from 1 to 65535 inclusive.
+#KDQ_GS_POLICY_SERVER_PORT=16311
+
+# Choose the interval, in minutes, used when obtaining updates
+# from the Authorization Policy Server. This parameter is not required.
+# The default is 30 minutes. Valid values are from 5 to 1440 minutes
+# inclusive.
+#KDQ_GS_POLLING_INTERVAL=30
+
+# Choose the expiration interval for the local policy store. If
+# the policy store cannot be updated from the Authorization Policy Server,
+# this interval is the amount of time the local policy store will 
+# continue to be utilized from the last update. These parameters
+# are not required. The default is 7 days and 0 hours. The value
+# specified for hours must be in the range of 0-23 hours. If
+# the expiration interval is set to 0 days and 0 hours, the policy
+# store will never expire.
+#KDQ_GS_POLICY_STORE_EXP_DAYS=7
+#KDQ_GS_POLICY_STORE_EXP_HOURS=0
+
+# If authorization policies are enabled, the following
+# parameters are required. Uncomment each line and provide the
+# User ID and password for the Authorization Policy Server.
+#KDQ_GS_POLICY_SERVER_USERID=
+#KDQ_GS_POLICY_SERVER_PWD=

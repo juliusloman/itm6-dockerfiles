@@ -1,0 +1,245 @@
+# ****************************************************************************
+# * Licensed Materials - Property of IBM
+# * 
+# * OCO Source Materials - IBM Confidential
+# * 5724-C04
+# *
+# * Copyright IBM Corporation 2007-2013 All Rights Reserved
+# *
+# * The source code for this program is not published or other-
+# * wise divested of its trade secrets, irrespective of what has
+# * been deposited with the U.S. Copyright Office.
+# *****************************************************************************
+
+# This is a sample silent configuration response file
+
+# To configure a TEMS using this silent response file:
+#   1) copy this file to another location and modify the necessary parameters
+#   2) run "itmcmd config -S -p <silent_response_file> -t <tems_name>"
+#      - give an absolute path for the silent_response_file
+
+# Syntax rules:
+# - Comment lines begin with "#"
+# - Blank lines are ignored
+# - Parameter lines are PARAMETER=value (do not put space before the PARAMETER)
+# - Space before or after an equal sign is OK
+# - Parameter values should NOT contain the following characters $, =, or |
+
+################## TEMS CONFIGURATION ##################
+
+# Will this TEMS be a Hub(*LOCAL) or Remote TEMS?
+# This parameter is NOT required. (default is *LOCAL)
+# Valid values are: *LOCAL and *REMOTE
+#CMSTYPE=*LOCAL
+
+# Will this agent connect to the TEMS through a firewall?
+# This parameter is NOT required.  (default is NO)
+# Valid values are: YES and NO
+#   - If set to YES the NETWORKPROTOCOL must be ip.pipe
+#FIREWALL=NO
+
+# What network protocol is used when connecting to the TEMS?
+# This parameter is required.
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe or ip6.spipe
+NETWORKPROTOCOL=ip.pipe
+
+# What is the first backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+BK1NETWORKPROTOCOL=ip.spipe
+
+# What is the second backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+BK2NETWORKPROTOCOL=ip
+
+# What is the third backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK3NETWORKPROTOCOL=none
+
+# What is the fourth backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK4NETWORKPROTOCOL=none
+
+# What is the fifth backup network protocol used for connecting to the TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK5NETWORKPROTOCOL=none
+
+# If you configure this TEMS as a Hub (*LOCAL), what is the host name of this TEMS?
+# This parameter is NOT required when you configure this TEMS as a Hub (*LOCAL) (if not already configured, the local system is default)
+#
+# If you configure this TEMS as a Remote TEMS, what is the host name of the Hub (*LOCAL) TEMS?
+# This parameter is required when you configure this TEMS as a Remote TEMS
+# Depending on the protocols specified, IPv4 protocols and IPv6 protocols both require corresponding hostnames:
+#HOSTNAME=somehost.somewhere.com
+#IP6HOSTNAME=somehost-ip6.ip6.somewhere.com
+
+# If ip.pipe is one of the six protocols what is the IP pipe port number?
+# This parameter is NOT required. (default is 1918)
+#IPPIPEPORTNUMBER=1918
+
+# If ip6.pipe is one of the six protocols what is the IP6 pipe port number?
+# This parameter is NOT required. (default is 1918)
+#IP6PIPEPORTNUMBER=1918
+
+# If ip.pipe is one of the six protocols what is the IP pipe partition name?
+# This parameter is NOT required. (default is null)
+#KDC_PARTITIONNAME=null
+
+# If ip.pipe is one of the six protocols what is the KDC partition file?
+# This parameter is NOT required. (default is null)
+#KDC_PARTITIONFILE=null
+
+# If ip.spipe is one of the six protocols what is the IP spipe port number?
+# This parameter is NOT required. (default is 3660)
+#IPSPIPEPORTNUMBER=3660
+
+# If ip6.spipe is one of the six protocols what is the IP6 spipe port number?
+# This parameter is NOT required. (default is 3660)
+#IP6SPIPEPORTNUMBER=3660
+
+# If ip is one of the six protocols what is the IP port number?
+# This parameter is NOT required. (default is 1918)
+# A port number and or one or more pools of port numbers can be given.
+# The format for a pool is #-# with no embedded blanks.
+#PORTNUMBER=1918
+
+# If ip6 is one of the six protocols what is the IP6 port number?
+# This parameter is NOT required. (default is 1918)
+# A port number and or one or more pools of port numbers can be given.
+# The format for a pool is #-# with no embedded blanks.
+#IP6PORTNUMBER=1918
+
+# If sna is one of the three protocols what is the SNA net name?
+# This parameter is NOT required. (default is CANDLE)
+#NETNAME=CANDLE
+
+# If sna is one of the three protocols what is the SNA LU name?
+# This parameter is NOT required. (default is LUNAME)
+#LUNAME=LUNAME
+
+# If sna is one of the three protocols what is the SNA log mode?
+# This parameter is NOT required. (default is LOGMODE)
+#LOGMODE=LOGMODE
+
+# Will this TEMS use configuration auditing?
+# This parameter is NOT required. (default is NO)
+# Valid values are: YES and NO
+#AUDIT=NO
+
+################## HOT STAND-BY CONFIGURATION ##################
+
+# Would you like to configure a connection to a secondary TEMS for hot stand-by?
+# This parameter is NOT required. (default is NO)
+# Valid values are: YES and NO
+#FTO=NO
+
+# Confirm hot stand-by.
+# This parameter should be set the same as FTO.
+#OKFTO=NO
+
+# What network protocol is used when connecting to the secondary TEMS?
+# This parameter is required when FTO=YES
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe or ip6.spipe
+#HSNETWORKPROTOCOL=ip.pipe
+
+# What is the first backup network protocol used for connecting to the secondary TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK1HSNETWORKPROTOCOL=none
+
+# What is the second backup network protocol used for connecting to the secondary TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK2HSNETWORKPROTOCOL=none
+
+# What is the third backup network protocol used for connecting to the secondary TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK3HSNETWORKPROTOCOL=none
+
+# What is the fourth backup network protocol used for connecting to the secondary TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK4HSNETWORKPROTOCOL=none
+
+# What is the fifth backup network protocol used for connecting to the secondary TEMS?
+# This parameter is NOT required. (default is none)
+# Valid values are: ip, sna, ip.pipe, ip.spipe, ip6, ip6.pipe, ip6.spipe or none
+#BK5HSNETWORKPROTOCOL=none
+
+# If configuring a connection for a secondary TEMS, what is the hostname of the secondary TEMS?
+# This parameter is required if FTO=YES
+# Depending on the protocols specified, IPv4 protocols and IPv6 protocols both require corresponding hostnames:
+#MIRROR=standby_tems.somewhere.com
+#IP6MIRROR=standby_tems-ip6.ip6.somewhere.com
+
+# If ip.pipe is one of the three secondary TEMS protocols what is the IP pipe port number?
+# This parameter is NOT required. (default is 1918)
+#HSIPPIPEPORTNUMBER=1918
+
+# If ip is one of the three secondary TEMS protocols what is the IP port number?
+# This parameter is NOT required. (default is 1918)
+# A port number and or one or more pools of port numbers can be given.
+# The format for a pool is #-# with no embedded blanks.
+#HSPORTNUMBER=1918
+
+# If sna is one of the three secondary TEMS protocols what is the SNA net name?
+# This parameter is NOT required. (default is CANDLE)
+#HSNETNAME=CANDLE
+
+# If sna is one of the three secondary TEMS protocols what is the SNA LU name?
+# This parameter is NOT required. (default is LUNAME)
+#HSLUNAME=LUNAME
+
+# If sna is one of the three secondary TEMS protocols what is the SNA log mode?
+# This parameter is NOT required. (default is LOGMODE)
+#HSLOGMODE=LOGMODE
+
+################## OPTIONAL PRIMARY NETWORK NAME CONFIGURATION ##################
+
+# If the system is equipped with dual network host adapter cards you can designate
+# another network name.  What is the network name?
+# This parameter is NOT required. (default is none)
+#PRIMARYIP=none
+
+################## ADDITIONAL CONFIGURATION ##################
+
+# Validate users?
+# This parameter is NOT required. (default is NO)
+# Valid values are: YES and NO
+SECURITY=NO
+
+# Use Tivoli Event Integration Facility (EIF)?
+# This parameter is NOT required. (default is NO)
+# Valid values are: YES and NO
+TEC_EIF=NO
+
+# If using Tivoli Event Integration Facility what is the EIF server?
+# This paramter is required if TEC_EIF=YES.
+TEC_HOST=somehost.somewhere.com
+
+# If using Tivoli Event Integration Facility what is the EIF server port?
+# This paramter is required if TEC_EIF=YES.
+TEC_PORT=9998
+
+# Disable Workflow Policy/Tivoli Emitter Agent Event Forwarding?
+# This parameter is NOT required. (default is NO)
+# Valid values are: YES and NO
+#WORKFLOW=NO
+
+# Enable TEMS Security Compatibility Mode?
+# Enabling TEMS Security Compatibility mode allows for 
+# backwards compatibility with previous versions of 
+# components shipped before ITM 6.3.0 when securing 
+# command execution (Situation, Execute Command, Take 
+# Action).  If you have a previous version of a TEPS,
+# Hub TEMS, Policy Workflow or Omegamon product 
+# connecting to this TEMS, this option should be selected.
+# This parameter is NOT required. (default is N)
+# Valid answers: Y/N
+#KMS_SECURITY_COMPATIBILITY_MODE=Y
+
